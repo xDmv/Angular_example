@@ -1,49 +1,49 @@
 <div>
-  <p>List products</p>
+	<p>List products</p>
 </div>
 <div>
-  <span>nav panel</span>
-  <button (click)="onsize()">size grid</button>
+	<span>nav panel</span>
+	<button (click)="onGridList()">size grid</button>
 </div>
 <div>
-  <span *ngIf="!shown"> Loading ... </span>
-  <div *ngIf="cols == 1">
-    <p>new sposob</p>
-    <div *ngFor="let x of products" class="col1">
-      <img
-        src="http://smktesting.herokuapp.com/static/{{ x.img }}"
-        alt="photo product"
-        class="indent"
-      />
-      <span class="indent">{{ x.title }}</span>
-      <button
-        mat-raised-button
-        color="primary"
-        style="margin-left: 10%;"
-        (click)="onChoeseProduct(x)"
-      >
-        Detals
-      </button>
-    </div>
-  </div>
-  <span *ngIf="shown">
-    <mat-grid-list *ngIf="cols == 3" cols="3">
-      <mat-grid-tile *ngFor="let x of products">
-        <div class="item">
-          <img
-            src="http://smktesting.herokuapp.com/static/{{ x.img }}"
-            alt="photo product"
-          />
-          <span>{{ x.title }}</span>
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="onChoeseProduct(x.id)"
-          >
-            Detals
-          </button>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </span>
+	<span *ngIf="!shown"> Loading ... </span>
+	<div *ngIf="cols == 1">
+		<p>new sposob</p>
+		<div *ngFor="let x of products" class="col1">
+			<img
+				src="http://smktesting.herokuapp.com/static/{{ x.img }}"
+				alt="photo product"
+				class="indent"
+			/>
+			<span class="indent">{{ x.title }}</span>
+			<button
+				mat-raised-button
+				color="primary"
+				style="margin-left: 10%;"
+				(click)="onChoeseProduct(x)"
+			>
+				Detals
+			</button>
+		</div>
+	</div>
+	<span *ngIf="shown">
+		<mat-grid-list *ngIf="cols == 3" cols="3">
+			<mat-grid-tile *ngFor="let itm of products">
+				<div class="item">
+					<img
+						src="http://smktesting.herokuapp.com/static/{{ itm.img }}"
+						alt="photo product"
+					/>
+					<span>{{ itm.title }}</span>
+					<button
+						mat-raised-button
+						color="primary"
+						(click)="onChoeseProduct(itm.id)"
+					>
+						Detals
+					</button>
+				</div>
+			</mat-grid-tile>
+		</mat-grid-list>
+	</span>
 </div>

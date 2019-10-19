@@ -1,13 +1,12 @@
 .item {
-  display: grid;
+  display : grid;
 }
-
 .col1 {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 300px;
+  display     : flex;
+  align-items : center;
+  width       : 100%;
+  height      : 300px;
   .indent {
-    padding-left: 10%;
+    padding-left : 10%;
   }
 }
