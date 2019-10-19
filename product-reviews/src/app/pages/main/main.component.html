@@ -1,12 +1,15 @@
 <div>
-	<p>List products</p>
+	<!-- <p>List products</p> -->
+	<app-header></app-header>
 </div>
 <div>
 	<span>nav panel</span>
 	<button (click)="onGridList()">size grid</button>
 </div>
 <div>
-	<span *ngIf="!shown"> Loading ... </span>
+	<span *ngIf="!shown"> 
+		<mat-spinner></mat-spinner>
+	</span>
 	<div *ngIf="cols == 1">
 		<p>new sposob</p>
 		<div *ngFor="let x of products" class="col1">

@@ -13,17 +13,17 @@ export class MainComponent implements OnInit {
 
 	data$;
 
-	products: any;
-	product: any;
-	shown: boolean = false;
+	products : any;
+	product  : any;
+	shown    : boolean = false;
 
 	cols: number = 1;
-	hei: string = '1:1';
+	hei : string = '1:1';
 
 	constructor(
-		public api: ApiService,
-		private router: Router,
-		public data: DatakeepService
+		public  api    : ApiService,
+		private router : Router,
+		public  data   : DatakeepService
 	) {
 
 	}

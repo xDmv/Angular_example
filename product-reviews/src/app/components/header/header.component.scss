@@ -1,0 +1,23 @@
+.title{
+	display: flex;
+	align-items: center;
+}
+.spacer {
+	flex: 1 1 auto;
+}
+.block-btn{
+	.buttons{
+		button{
+			margin-right: 10px;
+		}
+	}
+	.login{
+		display: flex;
+		align-items: center;
+		font-size: 16px;
+		color: white;
+		.name{
+			padding-left: 10px;
+		}
+	}
+}

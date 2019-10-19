@@ -1,0 +1,25 @@
+<mat-toolbar color="basic">
+		<div class="title">
+				<i class="material-icons">info</i>
+				List products 
+		</div>
+		<div class="spacer"></div>
+		<div class="block-btn">
+				<div 
+					class="buttons" 
+					*ngIf="!avtorizate">
+					<button mat-raised-button color="primary">
+						<i class="material-icons">input</i>
+						Log in
+					</button>
+					<button mat-raised-button color="accent">
+						<i class="material-icons">person_add</i>
+						Registrate
+					</button>
+				</div>
+				<div class="login" *ngIf="avtorizate">
+					<i class="material-icons">account_circle</i>
+					<span class="name">{{ name }}</span>
+				</div>
+			</div>
+</mat-toolbar>
