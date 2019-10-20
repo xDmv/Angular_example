@@ -1,0 +1,31 @@
+.back{
+	margin: 16px;
+}
+.container{
+	margin: 16px;
+	display: flex;
+	.product{
+		flex: auto;
+		.image{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+	.reviews{
+		
+		.box-reviews{
+			overflow: auto;
+			overflow-y: scroll;
+			height: 650px;
+			.cart{
+				margin: 10px;
+			}
+		}
+	}
+}
+
+.text{
+	text-decoration: none;
+	word-wrap: break-word; 
+}

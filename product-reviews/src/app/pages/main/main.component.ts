@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
 
 	data$;
 
+	title    : string;
 	products : any;
 	product  : any;
 	shown    : boolean = false;
@@ -29,9 +30,9 @@ export class MainComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.title = "List products";
 		this.data$ = this.api.listProduct().subscribe(
 			data => {
-				console.log('data: ', data);
 				this.products = data;
 				this.shown = true;
 			},
@@ -39,7 +40,6 @@ export class MainComponent implements OnInit {
 				console.log('error: ', error);
 			}
 		);
-
 	}
 
 	onGridList() {

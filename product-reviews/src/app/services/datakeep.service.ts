@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class DatakeepService {
 
-	check_product: any;
+	check_product : any;
+	login_name    : string;
+	token         : any;
 
-	constructor() { }
+	// constructor() { }
 }

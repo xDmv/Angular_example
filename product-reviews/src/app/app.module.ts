@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
@@ -28,11 +30,13 @@ import { HeaderComponent } from './components/header/header.component';
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
+		MatIconModule,
 		MatGridListModule,
 		MatButtonModule,
 		MatCardModule,
 		MatToolbarModule,
-		MatProgressSpinnerModule
+		MatProgressSpinnerModule,
+		MatDialogModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

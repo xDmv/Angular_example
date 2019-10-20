@@ -1,17 +1,21 @@
 <div>
-	<!-- <p>List products</p> -->
-	<app-header></app-header>
+	<app-header [MenuTitle]="title"></app-header>
 </div>
 <div>
-	<span>nav panel</span>
-	<button (click)="onGridList()">size grid</button>
+	<mat-toolbar color="basic">
+		<span>Navigate panel</span>
+		<div class="spacer"></div>
+		<button (click)="onGridList()">
+				<i class="material-icons" *ngIf="cols == 3"> grid_on </i>
+				<i class="material-icons" *ngIf="cols == 1"> grid_off </i>
+		</button>
+	</mat-toolbar>
 </div>
 <div>
 	<span *ngIf="!shown"> 
 		<mat-spinner></mat-spinner>
 	</span>
 	<div *ngIf="cols == 1">
-		<p>new sposob</p>
 		<div *ngFor="let x of products" class="col1">
 			<img
 				src="http://smktesting.herokuapp.com/static/{{ x.img }}"
@@ -26,6 +30,7 @@
 				(click)="onChoeseProduct(x)"
 			>
 				Detals
+				<i class="material-icons">more_horiz</i>
 			</button>
 		</div>
 	</div>
@@ -38,12 +43,11 @@
 						alt="photo product"
 					/>
 					<span>{{ itm.title }}</span>
-					<button
-						mat-raised-button
-						color="primary"
+					<button mat-raised-button color="primary"
 						(click)="onChoeseProduct(itm.id)"
 					>
 						Detals
+						<i class="material-icons">more_horiz</i>
 					</button>
 				</div>
 			</mat-grid-tile>

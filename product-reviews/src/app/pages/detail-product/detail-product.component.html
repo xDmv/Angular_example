@@ -1,27 +1,33 @@
-<div>
-	<button mat-raised-button color="primary" (click)="goBack()">
+<app-header [MenuTitle]="title"></app-header>
+<div class="back">
+	<button mat-raised-button color="basic" (click)="goBack()">
+		<i class="material-icons">arrow_back_ios</i>
 		Back
 	</button>
 </div>
-<div>
-	<div>
-		<h3>o tovare</h3>
-		<img
-			src="http://smktesting.herokuapp.com/static/{{ product.img }}"
-			alt="photo product"
-		/>
-		<h5>{{ product.title }}</h5>
-		<div>
-			{{ product.text }}
-		</div>
+<div class="container">
+	<div class="product">
+		<h3>{{ product_name }}</h3>
+		<span class="image">
+			<img
+				src="http://smktesting.herokuapp.com/static/{{ product_img }}"
+				alt="photo product"
+				
+			/>
+		</span>
+		<h4>Description:</h4>
+		<span class="text">
+			{{ product_text }}
+		</span>
 	</div>
-	<div>
+	<div class="reviews">
 		<h3>Reviews:</h3>
 		<button mat-raised-button color="primary">
-		Add review
+			<i class="material-icons">add</i>
+			Add review
 		</button>
-		<div>
-			<mat-card *ngFor="let item of reviews">
+		<div class="box-reviews">
+			<mat-card *ngFor="let item of reviews" class="cart">
 				<mat-card-header>
 					Rate: {{ item.rate }}
 					<i class="material-icons">
@@ -33,12 +39,18 @@
 				</mat-card-header>
 				<mat-card-content>
 					Comment:
-					<p>{{ item.text }}</p>
+					<div class="text">{{ item.text }}</div>
 				</mat-card-content>
 				<mat-card-actions>
-					public as {{ item.created_by.username }} date: {{ item.created_at }}
+					public as {{ item.created_by.username }} date: {{ item.created_at | date:"dd.MM.yyyy HH:mm:ss" }}
 				</mat-card-actions>
 			</mat-card>
 		</div>
 	</div>
 </div>
+<!-- 
+<i class="material-icons">clear</i>
+<i class="material-icons">delete</i>
+<i class="material-icons">delete_sweep</i>
+<i class="material-icons">save_alt</i> 
+-->
