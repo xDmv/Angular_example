@@ -11,11 +11,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { DetailProductComponent } from './pages/detail-product/detail-product.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AuthorizationComponent } from './components/authorization/authorization.component';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
 		AppComponent,
 		MainComponent,
 		DetailProductComponent,
-		HeaderComponent
+		HeaderComponent,
+		AuthorizationComponent
 	],
 	imports: [
 		BrowserModule,
@@ -36,9 +39,11 @@ import { HeaderComponent } from './components/header/header.component';
 		MatCardModule,
 		MatToolbarModule,
 		MatProgressSpinnerModule,
-		MatDialogModule
+		MatDialogModule,
+		FormsModule
 	],
 	providers: [],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
+	entryComponents: [AuthorizationComponent]
 })
 export class AppModule { }

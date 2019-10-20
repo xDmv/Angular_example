@@ -15,9 +15,13 @@
 		display: flex;
 		align-items: center;
 		font-size: 16px;
-		color: white;
-		.name{
-			padding-left: 10px;
+		.block{
+			display: flex;
+			align-items: center;
+			padding-right: 10px;
+			.name{
+				padding-left: 10px;
+			}
 		}
 	}
 }

@@ -7,23 +7,25 @@
 	<div class="spacer"></div>
 	<div class="block-btn">
 		<div class="buttons" *ngIf="!avtorizate">
-			<button mat-raised-button color="basic">
+			<button mat-raised-button color="basic" 
+			(click)="openDialog('Please login in!', 'Log in')">
 				<i class="material-icons">input</i>
 				Log in
 			</button>
-			<button mat-raised-button color="warn">
+			<button mat-raised-button color="warn" 
+			(click)="openDialog('Please registrate!', 'Registrate')">
 				<i class="material-icons">person_add</i>
 				Registrate
 			</button>
 		</div>
 		<div class="login" *ngIf="avtorizate">
-			<div>
+			<div class="block">
 				<i class="material-icons">account_circle</i>
 				<span class="name">{{ name }}</span>
 			</div>
-			<div>
+			<div class="block" (click)="onCloseLogin()">
 				<i class="material-icons">exit_to_app</i>
-				<span>Exit</span>
+				<span class="name">Exit</span>
 			</div>
 		</div>
 	</div>
