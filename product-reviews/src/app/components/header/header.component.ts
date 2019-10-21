@@ -39,14 +39,14 @@ export class HeaderComponent implements OnInit {
 	}
 
 	openDialog(title: string, btn_text: string): void {
-		const dialogRef = this.dialog.open(AuthorizationComponent, {
-			height: '400px',
-			width: '600px',
-			data: {
-				text: title,
-				text_btn: btn_text
-			}
-		});
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = false;
+		dialogConfig.autoFocus = false;
+		dialogConfig.data = {
+			text: title,
+			text_btn: btn_text
+		}
+		const dialogRef = this.dialog.open(AuthorizationComponent, dialogConfig);
 		dialogRef.afterClosed().subscribe(
 			result => {
 				this.name = result;
@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
 		);
 	}
 
-	onCloseLogin(){
+	onCloseLogin() {
 		this.storage.login_name = '';
 		this.storage.token = '';
 		this.avtorizate = false;

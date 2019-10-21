@@ -22,7 +22,7 @@
 	</div>
 	<div class="reviews">
 		<h3>Reviews:</h3>
-		<button mat-raised-button color="primary">
+		<button mat-raised-button color="primary" (click)="openDialog()">
 			<i class="material-icons">add</i>
 			Add review
 		</button>
@@ -30,12 +30,8 @@
 			<mat-card *ngFor="let item of reviews" class="cart">
 				<mat-card-header>
 					Rate: {{ item.rate }}
-					<i class="material-icons">
-						grade
-					</i>
-					<i class="material-icons">
-						star_border
-					</i>
+					<i class="material-icons">grade</i>
+					<i class="material-icons">star_border</i>
 				</mat-card-header>
 				<mat-card-content>
 					Comment:

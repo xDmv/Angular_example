@@ -12,8 +12,8 @@
 	</mat-toolbar>
 </div>
 <div>
-	<span *ngIf="!shown"> 
-		<mat-spinner></mat-spinner>
+	<span *ngIf="!shown" class="spinner"> 
+		<mat-spinner color="primary"></mat-spinner>
 	</span>
 	<div *ngIf="cols == 1">
 		<div *ngFor="let x of products" class="col1">

@@ -35,7 +35,7 @@ export class ApiService {
 		return result;
 	}
 
-	addReviews(rate: number, comment: string, id_product: number) {
+	addReview(rate: number, comment: string, id_product: number) {
 		const url = this.url + 'reviews/' + id_product;
 		const body = { rate: rate, text: comment };
 		const result = this.http.post(url, body);

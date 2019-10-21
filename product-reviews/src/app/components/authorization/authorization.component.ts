@@ -28,7 +28,6 @@ export class AuthorizationComponent implements OnInit {
 
 
 	save() {
-		// console.log('name: ', this.name + " password:" + this.password);
 		console.log('this.data.btn_text: ', this.data.text_btn);
 		if(this.data.text_btn === 'Registrate'){
 			this.api.addUser(this.name, this.password).subscribe(
@@ -41,7 +40,6 @@ export class AuthorizationComponent implements OnInit {
 						this.dialogRef.close(this.name);
 					}
 					if(!this.token.token){
-						// this.dialogRef.close();
 						this.message = this.token.message;
 					}
 				},
@@ -62,7 +60,6 @@ export class AuthorizationComponent implements OnInit {
 					}
 					if(!this.token.token){
 						this.message = this.token.message;
-						// this.dialogRef.close();
 					}
 				},
 				error => {
@@ -70,8 +67,6 @@ export class AuthorizationComponent implements OnInit {
 				}
 			);
 		}
-
-		// this.dialogRef.close(this.name);
 	}
 
 	close() {

@@ -45,12 +45,9 @@ export class MainComponent implements OnInit {
 	onGridList() {
 		if (this.cols == 3) {
 			this.cols = 1;
-			this.hei = "1:1";
-			console.log('cols == ', this.cols);
 		} else {
 			this.cols = 3;
 			this.hei = "3:1";
-			console.log('cols == ', this.cols);
 		}
 	}
 
@@ -59,10 +56,6 @@ export class MainComponent implements OnInit {
 		console.log('product.id: ', product.id);
 		this.data.check_product = product;
 		this.router.navigate(['/product/' + product.id]);
-	}
-
-	ngOnDestroy() {
-		console.log('ngOnDestroy');
 	}
 
 }

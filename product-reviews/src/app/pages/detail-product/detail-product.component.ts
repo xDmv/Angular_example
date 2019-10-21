@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ApiService } from 'src/app/services/api.service';
 import { DatakeepService } from 'src/app/services/datakeep.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddcommentComponent } from '../../components/addcomment/addcomment.component'
 
 
 @Component({
@@ -24,14 +26,15 @@ export class DetailProductComponent implements OnInit {
 		public  api      : ApiService,
 		private route    : ActivatedRoute,
 		private location : Location,
-		public  data     : DatakeepService
+		public  storage  : DatakeepService,
+		private dialog   : MatDialog
 	) {}
 
 	ngOnInit() {
 		this.id = this.route.snapshot.paramMap.get('id');
 		console.log(this.route.snapshot.paramMap.get('id'));
-		if(this.data.check_product){
-			this.product = this.data.check_product;
+		if(this.storage.check_product){
+			this.product = this.storage.check_product;
 			this.addDefaultContent(this.product);
 		}
 		else{
@@ -60,6 +63,23 @@ export class DetailProductComponent implements OnInit {
 		this.product_name = arr.title;
 		this.product_text = arr.text;
 		this.title = "Description for " + this.product_name;
+	}
+
+	openDialog(): void {
+		if(this.storage.token){
+			console.log('this.storage.token ', this.storage.token);
+			console.log('Id ', this.id);
+			const dialogConfig = new MatDialogConfig();
+			dialogConfig.disableClose = true;
+			dialogConfig.autoFocus = true;
+			dialogConfig.data = {
+				id: this.id
+			}
+			const dialogRef = this.dialog.open(AddcommentComponent, dialogConfig);
+			dialogRef.afterClosed();
+		} else {
+			console.log('not avtorizate');
+		}
 	}
 
 }

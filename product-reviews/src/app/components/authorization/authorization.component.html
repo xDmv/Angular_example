@@ -1,5 +1,5 @@
 	<h1 mat-dialog-title>{{ data.text }}</h1>
-	<h4 style="color: red; font-size: 16px;" *ngIf="message">{{ message }}</h4>
+	<span class="message" *ngIf="message">{{ message }}</span>
 	<div mat-dialog-content>
 		<p>User name</p>
 		<input type="text" name="name" [(ngModel)]="name" required/>
@@ -8,7 +8,5 @@
 	</div>
 	<div mat-dialog-actions>
 		<button mat-raised-button color="basic" (click)="close()">No Thanks</button>
-		<button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>
-			Ok
-		</button>
+		<button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
 	</div>
