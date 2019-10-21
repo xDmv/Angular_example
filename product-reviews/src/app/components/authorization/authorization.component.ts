@@ -17,6 +17,8 @@ export class AuthorizationComponent implements OnInit {
 
 	name: string;
 	password: string;
+	name_warning: string;
+	password_warning: string;
 	token: any;
 	message: string;
 
@@ -26,46 +28,50 @@ export class AuthorizationComponent implements OnInit {
 		public  api      : ApiService,
 		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
+	ngOnInit() {
+	}
 
 	save() {
-		console.log('this.data.btn_text: ', this.data.text_btn);
-		if(this.data.text_btn === 'Registrate'){
-			this.api.addUser(this.name, this.password).subscribe(
-				data => {
-					console.log('data1:: ', data);
-					this.token = data;
-					if(this.token.token){
-						this.storage.login_name = this.name;
-						this.storage.token = this.token.token;
-						this.dialogRef.close(this.name);
+		this.message = '';
+		if(this.onValidate()){
+			if(this.data.text_btn === 'Registrate'){
+				this.api.addUser(this.name, this.password).subscribe(
+					data => {
+						console.log('data1:: ', data);
+						this.token = data;
+						if(this.token.token){
+							this.storage.login_name = this.name;
+							this.storage.token = this.token.token;
+							this.dialogRef.close(this.name);
+						}
+						if(!this.token.token){
+							this.message = this.token.message;
+						}
+					},
+					error => {
+						console.log('error1: ', error);
 					}
-					if(!this.token.token){
-						this.message = this.token.message;
+				);
+			}
+			if(this.data.text_btn === 'Log in'){
+				this.api.onLogin(this.name, this.password).subscribe(
+					data => {
+						console.log('data2:: ', data);
+						this.token = data;
+						if(this.token.token){
+							this.storage.login_name = this.name;
+							this.storage.token = this.token.token;
+							this.dialogRef.close(this.name);
+						}
+						if(!this.token.token){
+							this.message = this.token.message;
+						}
+					},
+					error => {
+						console.log('error2: ', error);
 					}
-				},
-				error => {
-					console.log('error1: ', error);
-				}
-			);
-		}
-		if(this.data.text_btn === 'Log in'){
-			this.api.onLogin(this.name, this.password).subscribe(
-				data => {
-					console.log('data2:: ', data);
-					this.token = data;
-					if(this.token.token){
-						this.storage.login_name = this.name;
-						this.storage.token = this.token.token;
-						this.dialogRef.close(this.name);
-					}
-					if(!this.token.token){
-						this.message = this.token.message;
-					}
-				},
-				error => {
-					console.log('error2: ', error);
-				}
-			);
+				);
+			}
 		}
 	}
 
@@ -73,7 +79,25 @@ export class AuthorizationComponent implements OnInit {
 		this.dialogRef.close();
 	}
 
-	ngOnInit() {
+	onValidate(){
+		let i : number = 0;
+		this.name_warning = '';
+		this.password_warning = '';
+		if(this.name) {
+			i++;
+		} else {
+			this.name_warning = "must not be empty"
+		}
+		if(this.password) {
+			i++;
+		} else {
+			this.password_warning = "must not be empty"
+		}
+		if(i === 2){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

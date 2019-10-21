@@ -1,3 +1,25 @@
-.star{
-	color: yellow;
+.block-message{
+	margin : 16px;
+	.text-mesage{
+		font-family : Roboto, "Helvetica Neue", sans-serif;
+		text-align  : center;
+		font-size   : 21px;
+	}
+	.input-data{
+		padding-top : 10px;
+		.star{
+			display     : flex;
+			align-items : center;
+			color       : yellow;
+			.rate{
+				font-family : Roboto, "Helvetica Neue", sans-serif;
+				color       : black;
+			}
+		}
+	}
+	.box-btn{
+		button{
+			margin-left: 16px;
+		}
+	}
 }

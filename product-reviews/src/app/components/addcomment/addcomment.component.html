@@ -5,6 +5,7 @@
 		</div>
 		<div class="input-data">
 			<div class="star">
+				<span class="rate">Rate:</span>
 				<span (click)="onRate(1, true)" (mouseenter)="onRate(1, false)" (mouseleave)="onRate(0, false)">
 					<i class="material-icons" *ngIf="rate >= 1">grade</i>
 					<i class="material-icons" *ngIf="rate == 0">star_border</i>

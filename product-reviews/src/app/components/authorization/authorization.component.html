@@ -1,12 +1,23 @@
-	<h1 mat-dialog-title>{{ data.text }}</h1>
-	<span class="message" *ngIf="message">{{ message }}</span>
-	<div mat-dialog-content>
-		<p>User name</p>
-		<input type="text" name="name" [(ngModel)]="name" required/>
-		<p>User password</p>
-		<input type="password" name="password" [(ngModel)]="password" required/>
+<h1 mat-dialog-title>{{ data.text }}</h1>
+<span class="message" *ngIf="message">{{ message }}</span>
+<div mat-dialog-content>
+	<div>
+		<mat-form-field class="example-full-width">
+			<p>User name</p>
+			<span class="message">{{name_warning}}</span>
+			<input matInput type="text" name="name" [(ngModel)]="name" required/>
+		</mat-form-field>
 	</div>
-	<div mat-dialog-actions>
-		<button mat-raised-button color="basic" (click)="close()">No Thanks</button>
-		<button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
+	<div>
+		<mat-form-field class="example-full-width">
+			<p>User password</p>
+			<span class="message">{{password_warning}}</span>
+			<input matInput type="password" name="password" [(ngModel)]="password" required/>
+		</mat-form-field>
 	</div>
+
+</div>
+<div mat-dialog-actions>
+	<button mat-raised-button color="basic" (click)="close()">No Thanks</button>
+	<button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
+</div>
