@@ -50,6 +50,10 @@ import { MessagesComponent } from './components/messages/messages.component';
 	],
 	providers: [],
 	bootstrap: [AppComponent],
-	entryComponents: [AuthorizationComponent, AddcommentComponent]
+	entryComponents: [
+		AuthorizationComponent, 
+		AddcommentComponent, 
+		MessagesComponent
+	]
 })
 export class AppModule { }

@@ -1,1 +1,6 @@
-<p>messages works!</p>
+<div class="block-message">
+	<div [innerHTML]="dataparam.text" class="message"></div>
+	<span class="box-message">
+		<button mat-raised-button color="basic" (click)="onClose()">Ok</button>
+	</span>
+</div>

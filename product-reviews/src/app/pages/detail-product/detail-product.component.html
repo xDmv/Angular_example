@@ -28,12 +28,14 @@
 		</button>
 		<div class="box-reviews">
 			<mat-card *ngFor="let item of reviews" class="cart">
-				<mat-card-header>
-					Rate: {{ item.rate }}
-					<i class="material-icons">grade</i>
-					<i class="material-icons">star_border</i>
-				</mat-card-header>
 				<mat-card-content>
+					<div class="stars">
+						<span>Rate:</span>
+						<span *ngFor="let i of stars" class="star">
+							<i class="material-icons" *ngIf="item.rate < i">star_border</i>
+							<i class="material-icons" *ngIf="item.rate >= i">grade</i>
+						</span>
+					</div>
 					Comment:
 					<div class="text">{{ item.text }}</div>
 				</mat-card-content>

@@ -33,14 +33,15 @@ export class AddcommentComponent implements OnInit {
 
 	onAddComent(){
 		console.log(this.rate + ' ' + this.comment + ' ' + this.product_id);
-		this.api.addReview(this.rate, this.comment, 1).subscribe(
+		this.api.addReview(this.rate, this.comment, this.product_id).subscribe(
 			data => {
-				console.log('data:: ', data);
+				console.log('data: ', data);
 				this.rate = 0;
 				this.comment = '';
-			}
+			},
+			error => { console.log('error: ', error); }
 		);
-		// this.dialogRef.close();
+		this.dialogRef.close();
 	}
 
 	onClose(){

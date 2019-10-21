@@ -5,9 +5,9 @@ import { DatakeepService } from 'src/app/services/datakeep.service';
 
 
 @Component({
-	selector: 'app-main',
-	templateUrl: './main.component.html',
-	styleUrls: ['./main.component.scss']
+	selector    : 'app-main',
+	templateUrl : './main.component.html',
+	styleUrls   : ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
 
@@ -52,8 +52,6 @@ export class MainComponent implements OnInit {
 	}
 
 	onChoeseProduct(product: any) {
-		console.log('product: ', product);
-		console.log('product.id: ', product.id);
 		this.data.check_product = product;
 		this.router.navigate(['/product/' + product.id]);
 	}

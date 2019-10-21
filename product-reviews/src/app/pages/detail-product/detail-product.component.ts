@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { DatakeepService } from 'src/app/services/datakeep.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddcommentComponent } from '../../components/addcomment/addcomment.component'
+import { MessagesComponent } from '../../components/messages/messages.component';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class DetailProductComponent implements OnInit {
 	product_text : any;
 	reviews      : any;
 	title        : string;
+	stars = [1, 2, 3, 4, 5];
+	message: string = 'In order to leave a comment you need to log in!';
 
 	constructor(
 		public  api      : ApiService,
@@ -49,7 +52,7 @@ export class DetailProductComponent implements OnInit {
 			);
 		}
 		this.api.listReviews(this.id).subscribe(
-			data => { this.reviews = data },
+			data => { this.reviews = data; console.log('reviews: ', data) },
 			error => { console.log('error: ', error) }
 		);
 	}
@@ -67,8 +70,8 @@ export class DetailProductComponent implements OnInit {
 
 	openDialog(): void {
 		if(this.storage.token){
-			console.log('this.storage.token ', this.storage.token);
-			console.log('Id ', this.id);
+			// console.log('this.storage.token ', this.storage.token);
+			// console.log('Id ', this.id);
 			const dialogConfig = new MatDialogConfig();
 			dialogConfig.disableClose = true;
 			dialogConfig.autoFocus = true;
@@ -78,8 +81,18 @@ export class DetailProductComponent implements OnInit {
 			const dialogRef = this.dialog.open(AddcommentComponent, dialogConfig);
 			dialogRef.afterClosed();
 		} else {
-			console.log('not avtorizate');
+			// console.log('not avtorizate');
+			this.openMessages(this.message);
 		}
+	}
+
+	openMessages(message: string): void{
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.data = {
+			text: message
+		}
+		const dialogRef = this.dialog.open(MessagesComponent, dialogConfig);
+		dialogRef.afterClosed();
 	}
 
 }

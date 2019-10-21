@@ -17,16 +17,13 @@
 	</span>
 	<div *ngIf="cols == 1">
 		<div *ngFor="let x of products" class="col1">
-			<img
-				src="http://smktesting.herokuapp.com/static/{{ x.img }}"
-				alt="photo product"
-				class="indent"
-			/>
-			<span class="indent">{{ x.title }}</span>
+			<span class="indent" (click)="onChoeseProduct(x)">
+				<img src="http://smktesting.herokuapp.com/static/{{ x.img }}" alt="photo product"/>
+			</span>
+			<span class="name-product" (click)="onChoeseProduct(x)">{{ x.title }}</span>
 			<button
 				mat-raised-button
 				color="primary"
-				style="margin-left: 10%;"
 				(click)="onChoeseProduct(x)"
 			>
 				Detals
@@ -41,10 +38,11 @@
 					<img
 						src="http://smktesting.herokuapp.com/static/{{ itm.img }}"
 						alt="photo product"
+						(click)="onChoeseProduct(itm)"
 					/>
-					<span>{{ itm.title }}</span>
+					<span class="text">{{ itm.title }}</span>
 					<button mat-raised-button color="primary"
-						(click)="onChoeseProduct(itm.id)"
+						(click)="onChoeseProduct(itm)"
 					>
 						Detals
 						<i class="material-icons">more_horiz</i>

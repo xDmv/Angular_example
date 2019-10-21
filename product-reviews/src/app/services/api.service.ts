@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ENV } from '../environment/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,8 +37,12 @@ export class ApiService {
 
 	addReview(rate: number, comment: string, id_product: number) {
 		const url = this.url + 'reviews/' + id_product;
-		const body = { rate: rate, text: comment };
-		const result = this.http.post(url, body);
+		var params = new HttpParams();
+		params = params.append('rate', String(rate));
+		params = params.append('text', comment);
+		const result = this.http.post(url, {params: params});
+		// const body = { "rate": rate, "text": comment, "username": "sd" };
+		// const result = this.http.post(url, body);
 		return result;
 	}
 

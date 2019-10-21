@@ -13,12 +13,22 @@
 		}
 	}
 	.reviews{
-		
+		font-family: Roboto, "Helvetica Neue", sans-serif;
+		font-size: 14px;
 		.box-reviews{
 			overflow: auto;
 			overflow-y: scroll;
 			height: 650px;
+			.stars{
+				display: flex;
+				align-items: center;
+
+				.star{
+					color: yellow;
+				}
+			}
 			.cart{
+				box-shadow: 0px 0px 10px -2px #000000;
 				margin: 10px;
 			}
 		}
