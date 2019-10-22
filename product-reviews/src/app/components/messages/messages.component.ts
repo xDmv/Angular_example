@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
 	text: string;
+	btn2: boolean;
 }
 @Component({
 	selector: 'app-messages',
@@ -22,7 +23,14 @@ export class MessagesComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onClose(){
-		this.dialogRef.close();
+	onClose(clear: boolean) {
+		if(clear) {
+			this.dialogRef.close('clear');
+		}
+		if(!clear) {
+			this.dialogRef.close();
+		}
 	}
+
+
 }

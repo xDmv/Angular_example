@@ -1,6 +1,18 @@
 <div class="block-message">
 	<div [innerHTML]="dataparam.text" class="message"></div>
 	<span class="box-message">
-		<button mat-raised-button color="basic" (click)="onClose()">Ok</button>
+		<button 
+			mat-raised-button 
+			color="basic" 
+			(click)="onClose(false)"
+			*ngIf="dataparam.btn2">
+			No, thanks
+		</button>
+		<button 
+			mat-raised-button 
+			color="primary" 
+			(click)="onClose(true)">
+			Ok
+		</button>
 	</span>
 </div>

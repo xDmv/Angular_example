@@ -20,14 +20,21 @@
 			{{ product_text }}
 		</span>
 	</div>
+	<!-- <div>
+		<app-list-comments [List_comments]="storage.reviews_item"></app-list-comments>
+	</div> -->
 	<div class="reviews">
 		<h3>Reviews:</h3>
-		<button mat-raised-button color="primary" (click)="openDialog()">
+		<button mat-raised-button color="primary" (click)="addComment()">
 			<i class="material-icons">add</i>
 			Add review
 		</button>
 		<div class="box-reviews">
-			<mat-card *ngFor="let item of reviews" class="cart">
+			<span *ngIf="!reviews_shown" class="spinner"> 
+				<mat-spinner color="primary"></mat-spinner>
+			</span>
+			<app-list-comments *ngIf="reviews_shown" [List_comments]="reviews"></app-list-comments>
+			<!-- <mat-card *ngFor="let item of reviews" class="cart">
 				<mat-card-content>
 					<div class="stars">
 						<span>Rate:</span>
@@ -42,13 +49,7 @@
 				<mat-card-actions>
 					public as {{ item.created_by.username }} date: {{ item.created_at | date:"dd.MM.yyyy HH:mm:ss" }}
 				</mat-card-actions>
-			</mat-card>
+			</mat-card> -->
 		</div>
 	</div>
 </div>
-<!-- 
-<i class="material-icons">clear</i>
-<i class="material-icons">delete</i>
-<i class="material-icons">delete_sweep</i>
-<i class="material-icons">save_alt</i> 
--->

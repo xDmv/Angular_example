@@ -1,5 +1,9 @@
 # Angular-exemple
-Angular 8.2.9
+Angular CLI: 8.3.10
+Node: 12.11.0
+OS: linux x64
+Angular: 8.2.11
+
 
 <!-- my experience in development Angular 8+ aplication
 

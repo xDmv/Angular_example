@@ -8,12 +8,12 @@
 	<div class="block-btn">
 		<div class="buttons" *ngIf="!avtorizate">
 			<button mat-raised-button color="basic" 
-			(click)="openDialog('Please login in!', 'Log in')">
+			(click)="openAutharizate('Please login in!', 'Log in')">
 				<i class="material-icons">input</i>
 				Log in
 			</button>
 			<button mat-raised-button color="warn" 
-			(click)="openDialog('Please registrate!', 'Registrate')">
+			(click)="openAutharizate('Please registrate!', 'Registrate')">
 				<i class="material-icons">person_add</i>
 				Registrate
 			</button>

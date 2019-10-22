@@ -15,14 +15,16 @@ import { MessagesComponent } from '../../components/messages/messages.component'
 })
 export class DetailProductComponent implements OnInit {
 
-	id           : any;
-	product      : any;
-	product_name : string;
-	product_img  : string;
-	product_text : any;
-	reviews      : any;
-	title        : string;
-	stars = [1, 2, 3, 4, 5];
+	data$;
+	id            : any;
+	product       : any;
+	product_name  : string;
+	product_img   : string;
+	product_text  : any;
+	reviews       : any;
+	reviews_items : any;
+	reviews_shown : boolean;
+	title         : string;
 	message: string = 'In order to leave a comment you need to log in!';
 
 	constructor(
@@ -51,10 +53,8 @@ export class DetailProductComponent implements OnInit {
 				}
 			);
 		}
-		this.api.listReviews(this.id).subscribe(
-			data => { this.reviews = data; console.log('reviews: ', data) },
-			error => { console.log('error: ', error) }
-		);
+		this.reviews_shown = false;
+		this.getListReviews();
 	}
 
 	goBack() {
@@ -68,10 +68,8 @@ export class DetailProductComponent implements OnInit {
 		this.title = "Description for " + this.product_name;
 	}
 
-	openDialog(): void {
+	addComment(): void {
 		if(this.storage.token){
-			// console.log('this.storage.token ', this.storage.token);
-			// console.log('Id ', this.id);
 			const dialogConfig = new MatDialogConfig();
 			dialogConfig.disableClose = true;
 			dialogConfig.autoFocus = true;
@@ -79,7 +77,13 @@ export class DetailProductComponent implements OnInit {
 				id: this.id
 			}
 			const dialogRef = this.dialog.open(AddcommentComponent, dialogConfig);
-			dialogRef.afterClosed();
+			dialogRef.afterClosed().subscribe(
+				result => {
+					this.getListReviews();
+				}
+			);
+			this.reviews_shown = false;
+			
 		} else {
 			this.openMessages(this.message);
 		}
@@ -88,10 +92,21 @@ export class DetailProductComponent implements OnInit {
 	openMessages(message: string): void{
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.data = {
-			text: message
+			text: message,
+			btn2: false
 		}
 		const dialogRef = this.dialog.open(MessagesComponent, dialogConfig);
 		dialogRef.afterClosed();
+	}
+
+	getListReviews(){
+		this.api.listReviews(this.id).subscribe(
+			data => { 
+				this.reviews = data; 
+				this.reviews_shown = true;
+			},
+			error => { console.log('error: ', error) }
+		);
 	}
 
 }

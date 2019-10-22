@@ -1,0 +1,17 @@
+.stars{
+	display     : flex;
+	align-items : center;
+	.star{
+		color : yellow;
+	}
+}
+.cart{
+	box-shadow : 0px 0px 10px -2px #000000;
+	margin     : 10px;
+	width  : 400px;
+}
+
+.text{
+text-decoration : none;
+word-wrap       : break-word;
+}

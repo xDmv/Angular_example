@@ -2,7 +2,7 @@ import { Input, Component, OnInit } from '@angular/core';
 import { DatakeepService } from 'src/app/services/datakeep.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AuthorizationComponent } from "../authorization/authorization.component"
-
+import { MessagesComponent } from '../../components/messages/messages.component';
 
 @Component({
 	selector: 'app-header',
@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
 		private storage : DatakeepService,
 		private dialog  : MatDialog
 	) {
-
 	}
 
 	ngOnInit() {
@@ -38,7 +37,7 @@ export class HeaderComponent implements OnInit {
 		}
 	}
 
-	openDialog(title: string, btn_text: string): void {
+	openAutharizate(title: string, btn_text: string): void {
 		const dialogConfig = new MatDialogConfig();
 		dialogConfig.disableClose = false;
 		dialogConfig.autoFocus = false;
@@ -59,10 +58,25 @@ export class HeaderComponent implements OnInit {
 		);
 	}
 
+
 	onCloseLogin() {
-		this.storage.login_name = '';
-		this.storage.token = '';
-		this.avtorizate = false;
+		const dialogConfig = new MatDialogConfig();
+		dialogConfig.disableClose = true;
+		dialogConfig.autoFocus = true;
+		dialogConfig.data = {
+			text: 'Are you sure you want to sign out?',
+			btn2: true
+		}
+		const dialogRef = this.dialog.open(MessagesComponent, dialogConfig);
+		dialogRef.afterClosed().subscribe(
+			result => {
+				if(result == 'clear'){
+					this.storage.login_name = '';
+					this.storage.token = '';
+					this.avtorizate = false;
+				}
+			}
+		);
 	}
 
 }

@@ -21,6 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthorizationComponent } from './components/authorization/authorization.component';
 import { AddcommentComponent } from './components/addcomment/addcomment.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { ListCommentsComponent } from './components/list-comments/list-comments.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MessagesComponent } from './components/messages/messages.component';
 		HeaderComponent,
 		AuthorizationComponent,
 		AddcommentComponent,
-		MessagesComponent
+		MessagesComponent,
+		ListCommentsComponent
 	],
 	imports: [
 		BrowserModule,

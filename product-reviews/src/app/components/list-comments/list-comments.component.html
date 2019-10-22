@@ -1,0 +1,19 @@
+<!-- <ol>
+	<li *ngFor="let item of List_comments">{{ item.created_by.username }}</li>
+</ol> -->
+<mat-card *ngFor="let item of List_comments" class="cart">
+	<mat-card-content>
+		<div class="stars">
+			<span>Rate:</span>
+			<span *ngFor="let i of stars" class="star">
+				<i class="material-icons" *ngIf="item.rate < i">star_border</i>
+				<i class="material-icons" *ngIf="item.rate >= i">grade</i>
+			</span>
+		</div>
+		Comment:
+		<div class="text">{{ item.text }}</div>
+	</mat-card-content>
+	<mat-card-actions>
+		public as {{ item.created_by.username }} date: {{ item.created_at | date:"dd.MM.yyyy HH:mm:ss" }}
+	</mat-card-actions>
+</mat-card>
