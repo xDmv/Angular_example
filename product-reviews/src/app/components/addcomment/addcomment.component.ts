@@ -28,11 +28,9 @@ export class AddcommentComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		console.log('AddcommentComponent');
 	}
 
 	onAddComent(){
-		console.log(this.rate + ' ' + this.comment + ' ' + this.product_id);
 		this.api.addReview(this.rate, this.comment, this.product_id).subscribe(
 			data => {
 				console.log('data: ', data);

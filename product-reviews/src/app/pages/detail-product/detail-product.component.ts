@@ -81,7 +81,6 @@ export class DetailProductComponent implements OnInit {
 			const dialogRef = this.dialog.open(AddcommentComponent, dialogConfig);
 			dialogRef.afterClosed();
 		} else {
-			// console.log('not avtorizate');
 			this.openMessages(this.message);
 		}
 	}

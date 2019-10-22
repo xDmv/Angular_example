@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ENV } from '../environment/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { DatakeepService } from './datakeep.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -10,7 +12,8 @@ export class ApiService {
 	url: string;
 
 	constructor(
-		public http: HttpClient
+		public http    : HttpClient,
+		public storage : DatakeepService
 	) {
 		this.url = ENV.api.url;
 	}
@@ -37,12 +40,16 @@ export class ApiService {
 
 	addReview(rate: number, comment: string, id_product: number) {
 		const url = this.url + 'reviews/' + id_product;
-		var params = new HttpParams();
-		params = params.append('rate', String(rate));
-		params = params.append('text', comment);
-		const result = this.http.post(url, {params: params});
-		// const body = { "rate": rate, "text": comment, "username": "sd" };
-		// const result = this.http.post(url, body);
+		let token = this.storage.token;
+		const myHeaders = new HttpHeaders({
+			'Authorization': 'Token ' + token,
+			'Content-Type': 'application/json'
+		});
+		const body = {
+			"rate": rate,
+			"text": comment
+		};
+		const result = this.http.post(url, body, {headers:myHeaders});
 		return result;
 	}
 
