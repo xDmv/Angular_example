@@ -18,8 +18,8 @@ export class MainComponent implements OnInit {
 	product  : any;
 	shown    : boolean = false;
 
-	cols: number = 1;
-	hei : string = '1:1';
+	cols : number = 1;
+	hei  : string = '1:1';
 
 	constructor(
 		public  api    : ApiService,

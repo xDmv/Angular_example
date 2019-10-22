@@ -5,19 +5,40 @@
 		<mat-form-field class="example-full-width">
 			<p>User name</p>
 			<span class="message">{{name_warning}}</span>
-			<input matInput type="text" name="name" [(ngModel)]="name" required/>
+			<input 
+				matInput 
+				type="text" 
+				name="name" 
+				[(ngModel)]="name" 
+				required/>
 		</mat-form-field>
 	</div>
 	<div>
 		<mat-form-field class="example-full-width">
 			<p>User password</p>
 			<span class="message">{{password_warning}}</span>
-			<input matInput type="password" name="password" [(ngModel)]="password" required/>
+			<input 
+				matInput 
+				type="password" 
+				name="password" 
+				[(ngModel)]="password" 
+				required/>
 		</mat-form-field>
 	</div>
 
 </div>
 <div mat-dialog-actions>
-	<button mat-raised-button color="basic" (click)="close()">No Thanks</button>
-	<button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>Ok</button>
+	<button 
+		mat-raised-button 
+		color="basic" 
+		(click)="close()">
+		No Thanks
+	</button>
+	<button 
+		mat-raised-button 
+		color="primary" 
+		(click)="save()" 
+		cdkFocusInitial>
+		Ok
+	</button>
 </div>

@@ -10,5 +10,5 @@ export class DatakeepService {
 	token         : any;
 	reviews_item  : any;
 
-	// constructor() { }
+	constructor() {}
 }

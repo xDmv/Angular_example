@@ -17,6 +17,7 @@ export class AddcommentComponent implements OnInit {
 	product_id : number;
 	rate       : number = 0;
 	rate_shown : boolean = false;
+	rate_fix   : boolean = true;
 	comment    : any;
 
 	constructor(
@@ -30,7 +31,7 @@ export class AddcommentComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	onAddComent(){
+	onAddComent() {
 		this.api.addReview(this.rate, this.comment, this.product_id).subscribe(
 			data => {
 				console.log('data: ', data);
@@ -42,19 +43,23 @@ export class AddcommentComponent implements OnInit {
 		this.dialogRef.close();
 	}
 
-	onClose(){
+	onClose() {
 		this.rate = 0;
 		this.comment = '';
 		this.dialogRef.close();
 	}
 
-	onRate(star: number, fixed: boolean){
-		if(fixed === true) {
-			this.rate = star;
-			this.rate_shown = true;
-		} 
-		if(!this.rate_shown) {
-			this.rate = star;
+	onRate(star: number, fixed: boolean) {
+		if (this.rate_fix === true){
+			if((fixed === true) ) {
+				this.rate = star;
+				this.rate_shown = true;
+				this.rate_fix = false;
+			}
+			if((!this.rate_shown)) {
+
+				this.rate = star;
+			}
 		}
 	}
 }

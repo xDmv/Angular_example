@@ -1,38 +1,58 @@
-
-	<div class="block-message">
-		<div class="text-mesage">
-			{{ title }}
-		</div>
-		<div class="input-data">
-			<div class="star">
-				<span class="rate">Rate:</span>
-				<span (click)="onRate(1, true)" (mouseenter)="onRate(1, false)" (mouseleave)="onRate(0, false)">
-					<i class="material-icons" *ngIf="rate >= 1">grade</i>
-					<i class="material-icons" *ngIf="rate == 0">star_border</i>
-				</span>
-				<span (click)="onRate(2, true)" (mouseenter)="onRate(2, false)" (mouseleave)="onRate(0, false)">
-					<i class="material-icons" *ngIf="rate <= 1">star_border</i>
-					<i class="material-icons" *ngIf="rate >= 2">grade</i>
-				</span>
-				<span (click)="onRate(3, true)" (mouseenter)="onRate(3, false)" (mouseleave)="onRate(0, false)">
-					<i class="material-icons" *ngIf="rate <= 2">star_border</i>
-					<i class="material-icons" *ngIf="rate >= 3">grade</i>
-				</span>
-				<span (click)="onRate(4, true)" (mouseenter)="onRate(4)" (mouseleave)="onRate(0, false)">
-					<i class="material-icons" *ngIf="rate <= 3">star_border</i>
-					<i class="material-icons" *ngIf="rate >= 4">grade</i>
-				</span>
-				<span (click)="onRate(5, true)" (mouseenter)="onRate(5, false)" (mouseleave)="onRate(0, false)">
-					<i class="material-icons" *ngIf="rate <= 4">star_border</i>
-					<i class="material-icons" *ngIf="rate == 5">grade</i>
-				</span>
-			</div>
-			<mat-form-field class="example-full-width">
-				<textarea matInput placeholder="Add a comment" [(ngModel)]="comment" rows="5" cols="10"></textarea>
-			</mat-form-field>
-		</div>
-		<div class="box-btn">
-			<button mat-raised-button color="basic" (click)="onClose()">No Thanks</button>
-			<button mat-raised-button color="primary" (click)="onAddComent()">Ok</button>
-		</div>
+<div class="block-message">
+	<div class="text-mesage">
+		{{ title }}
 	</div>
+	<div class="input-data">
+		<div class="star">
+			<span class="rate">Rate:</span>
+			<span 
+				(click)="onRate(1, true)" 
+				(mouseenter)="onRate(1, false)" 
+				(mouseleave)="onRate(0, false)">
+				<i class="material-icons" *ngIf="rate >= 1">grade</i>
+				<i class="material-icons" *ngIf="rate == 0">star_border</i>
+			</span>
+			<span 
+				(click)="onRate(2, true)" 
+				(mouseenter)="onRate(2, false)" 
+				(mouseleave)="onRate(0, false)">
+				<i class="material-icons" *ngIf="rate <= 1">star_border</i>
+				<i class="material-icons" *ngIf="rate >= 2">grade</i>
+			</span>
+			<span 
+				(click)="onRate(3, true)" 
+				(mouseenter)="onRate(3, false)" 
+				(mouseleave)="onRate(0, false)">
+				<i class="material-icons" *ngIf="rate <= 2">star_border</i>
+				<i class="material-icons" *ngIf="rate >= 3">grade</i>
+			</span>
+			<span 
+				(click)="onRate(4, true)" 
+				(mouseenter)="onRate(4)" 
+				(mouseleave)="onRate(0, false)">
+				<i class="material-icons" *ngIf="rate <= 3">star_border</i>
+				<i class="material-icons" *ngIf="rate >= 4">grade</i>
+			</span>
+			<span 
+				(click)="onRate(5, true)" 
+				(mouseenter)="onRate(5, false)" 
+				(mouseleave)="onRate(0, false)">
+				<i class="material-icons" *ngIf="rate <= 4">star_border</i>
+				<i class="material-icons" *ngIf="rate == 5">grade</i>
+			</span>
+		</div>
+		<mat-form-field class="example-full-width" class="texta">
+			<textarea 
+				matInput 
+				placeholder="Add a comment" 
+				[(ngModel)]="comment" 
+				rows="10" 
+				cols="10">
+			</textarea>
+		</mat-form-field>
+	</div>
+	<div class="box-btn">
+		<button mat-raised-button color="basic" (click)="onClose()">No Thanks</button>
+		<button mat-raised-button color="primary" (click)="onAddComent()">Ok</button>
+	</div>
+</div>

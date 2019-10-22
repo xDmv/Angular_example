@@ -15,12 +15,12 @@ export interface DialogData {
 })
 export class AuthorizationComponent implements OnInit {
 
-	name: string;
-	password: string;
-	name_warning: string;
-	password_warning: string;
-	token: any;
-	message: string;
+	name             : string;
+	password         : string;
+	name_warning     : string;
+	password_warning : string;
+	token            : any;
+	message          : string;
 
 	constructor(
 		public dialogRef : MatDialogRef<HeaderComponent>,
