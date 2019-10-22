@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatakeepService } from 'src/app/services/datakeep.service';
 import { ApiService } from 'src/app/services/api.service';
 
+
 export interface DialogData {
 	text: string;
 	text_btn: string;
@@ -15,8 +16,8 @@ export interface DialogData {
 })
 export class AuthorizationComponent implements OnInit {
 
-	name             : string;
-	password         : string;
+	name             : string = '';
+	password         : string = '';
 	name_warning     : string;
 	password_warning : string;
 	token            : any;
@@ -83,7 +84,8 @@ export class AuthorizationComponent implements OnInit {
 		let i : number = 0;
 		this.name_warning = '';
 		this.password_warning = '';
-		if(this.name) {
+		console.log('length: ', this.name.length);
+		if((this.name !== '') && (this.name.length < 51)) {
 			i++;
 		} else {
 			this.name_warning = "must not be empty"
