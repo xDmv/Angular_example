@@ -8,7 +8,6 @@ export class DatakeepService {
 	check_product : any;
 	login_name    : string;
 	token         : any;
-	reviews_item  : any;
 
 	constructor() {}
 }
