@@ -12,13 +12,10 @@ import { ScreenService } from 'src/app/services/screen.service';
 })
 export class MainComponent implements OnInit {
 
-	data$;
-
-	title    : string;
-	products : any;
-	product  : any;
-	shown    : boolean = false;
-
+	title       : string;
+	products    : any;
+	product     : any;
+	shown       : boolean = false;
 	cols        : number = 1;
 	hei         : string = '1:1';
 	screen_size : number = 0;
@@ -34,7 +31,7 @@ export class MainComponent implements OnInit {
 
 	ngOnInit() {
 		this.title = "List products";
-		this.data$ = this.api.listProduct().subscribe(
+		this.api.listProduct().subscribe(
 			data => {
 				this.products = data;
 				this.shown = true;

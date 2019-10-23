@@ -11,4 +11,4 @@ Angular: 8.2.11 <br>
 3) npm install<br>
 4) ng serve —open<br>
 
-описание проекта в файле: readme.txt;
+Описание проекта в файле: readme.txt

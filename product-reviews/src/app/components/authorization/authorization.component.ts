@@ -29,7 +29,7 @@ export class AuthorizationComponent implements OnInit {
 		public dialogRef : MatDialogRef<HeaderComponent>,
 		private storage  : DatakeepService,
 		public  api      : ApiService,
-		private screen : ScreenService,
+		private screen   : ScreenService,
 		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
 	ngOnInit() {
@@ -38,7 +38,6 @@ export class AuthorizationComponent implements OnInit {
 
 	onScreen() {
 		this.screen_size = this.screen.getRatio();
-		console.log('this.screen_size: ', this.screen_size);
 	}
 
 	onResize(event) {
