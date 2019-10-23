@@ -3,6 +3,7 @@ import { HeaderComponent } from "../header/header.component"
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatakeepService } from 'src/app/services/datakeep.service';
 import { ApiService } from 'src/app/services/api.service';
+import { ScreenService } from 'src/app/services/screen.service';
 
 
 export interface DialogData {
@@ -22,14 +23,26 @@ export class AuthorizationComponent implements OnInit {
 	password_warning : string;
 	token            : any;
 	message          : string;
+	screen_size      : number = 0;
 
 	constructor(
 		public dialogRef : MatDialogRef<HeaderComponent>,
 		private storage  : DatakeepService,
 		public  api      : ApiService,
+		private screen : ScreenService,
 		@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
 	ngOnInit() {
+		this.onScreen();
+	}
+
+	onScreen() {
+		this.screen_size = this.screen.getRatio();
+		console.log('this.screen_size: ', this.screen_size);
+	}
+
+	onResize(event) {
+		this.onScreen();
 	}
 
 	save() {

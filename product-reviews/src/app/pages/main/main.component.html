@@ -1,13 +1,13 @@
 <div>
 	<app-header [MenuTitle]="title"></app-header>
 </div>
-<div>
+<div (window:resize)="onResize($event)">
 	<mat-toolbar color="basic">
 		<span>Navigate panel</span>
 		<div class="spacer"></div>
 		<button (click)="onGridList()">
-				<i class="material-icons" *ngIf="cols == 3"> grid_on </i>
-				<i class="material-icons" *ngIf="cols == 1"> grid_off </i>
+				<i class="material-icons" *ngIf="cols == 2"> grid_on</i>
+				<i class="material-icons" *ngIf="cols == 1"> grid_off</i>
 		</button>
 	</mat-toolbar>
 </div>
@@ -15,35 +15,42 @@
 	<span *ngIf="!shown" class="spinner"> 
 		<mat-spinner color="primary"></mat-spinner>
 	</span>
-	<div *ngIf="cols == 1">
-		<div *ngFor="let x of products" class="col1">
-			<span class="indent" (click)="onChoeseProduct(x)">
-				<img src="http://smktesting.herokuapp.com/static/{{ x.img }}" alt="photo product"/>
-			</span>
-			<span class="name-product" (click)="onChoeseProduct(x)">{{ x.title }}</span>
-			<button
-				mat-raised-button
-				color="primary"
-				(click)="onChoeseProduct(x)"
-			>
-				Detals
-				<i class="material-icons">more_horiz</i>
-			</button>
-		</div>
-	</div>
 	<span *ngIf="shown">
-		<mat-grid-list *ngIf="cols == 3" cols="3">
+		<div *ngIf="cols == 1">
+			<div *ngFor="let x of products">
+				<div *ngIf="screen_size < 1" class="col1">
+					<span class="indent" (click)="onChoeseProduct(x)">
+						<img src="http://smktesting.herokuapp.com/static/{{ x.img }}" alt="photo product"/>
+					</span>
+					<span class="name-product" (click)="onChoeseProduct(x)">{{ x.title }}</span>
+					<button mat-raised-button color="primary" (click)="onChoeseProduct(x)">
+						Detals
+						<i class="material-icons">more_horiz</i>
+					</button>
+				</div>
+				<div *ngIf="screen_size >=1" class="mobile">
+						<span (click)="onChoeseProduct(x)">
+							<img src="http://smktesting.herokuapp.com/static/{{ x.img }}" alt="photo product"/>
+						</span>
+						<span class="name-product" (click)="onChoeseProduct(x)">{{ x.title }}</span>
+						<button mat-raised-button color="primary" (click)="onChoeseProduct(x)">
+							Detals
+							<i class="material-icons">more_horiz</i>
+						</button>
+					</div>
+			</div>
+		</div>
+		<mat-grid-list *ngIf="cols == 2" cols="2">
 			<mat-grid-tile *ngFor="let itm of products">
-				<div class="item">
+				<div [ngClass]="screen_size < 1 ? 'item' : 'mobile'">
 					<img
+						[ngClass]="screen_size < 1 ? '' : 'image'"
 						src="http://smktesting.herokuapp.com/static/{{ itm.img }}"
 						alt="photo product"
 						(click)="onChoeseProduct(itm)"
 					/>
 					<span class="text">{{ itm.title }}</span>
-					<button mat-raised-button color="primary"
-						(click)="onChoeseProduct(itm)"
-					>
+					<button mat-raised-button color="primary" (click)="onChoeseProduct(itm)">
 						Detals
 						<i class="material-icons">more_horiz</i>
 					</button>

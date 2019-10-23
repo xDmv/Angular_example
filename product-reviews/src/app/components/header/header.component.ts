@@ -3,6 +3,7 @@ import { DatakeepService } from 'src/app/services/datakeep.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AuthorizationComponent } from "../authorization/authorization.component"
 import { MessagesComponent } from '../../components/messages/messages.component';
+import { ScreenService } from 'src/app/services/screen.service';
 
 @Component({
 	selector: 'app-header',
@@ -11,15 +12,18 @@ import { MessagesComponent } from '../../components/messages/messages.component'
 })
 export class HeaderComponent implements OnInit {
 
-	@Input() MenuTitle: string;
+	@Input() MenuTitle  : string;
+	// @Input() SizeScreen : number;
 
 	avtorizate  : boolean;
 	name        : string;
 	icon_toggle : boolean;
+	SizeScreen  : number;
 
 	constructor(
 		private storage : DatakeepService,
-		private dialog  : MatDialog
+		private dialog  : MatDialog,
+		private screen  : ScreenService
 	) {
 	}
 
@@ -35,6 +39,15 @@ export class HeaderComponent implements OnInit {
 		} else {
 			this.avtorizate = false;
 		}
+		this.onPhoneX();
+	}
+
+	onPhoneX() {
+		this.SizeScreen = this.screen.getRatio();
+	}
+
+	onResize(event) {
+		this.onPhoneX();
 	}
 
 	openAutharizate(title: string, btn_text: string): void {

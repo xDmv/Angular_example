@@ -1,7 +1,7 @@
-<!-- <ol>
-	<li *ngFor="let item of List_comments">{{ item.created_by.username }}</li>
-</ol> -->
-<mat-card *ngFor="let item of List_comments" class="cart">
+<mat-card 
+	(window:resize)="onResize($event)"
+	*ngFor="let item of List_comments" 
+	[ngClass]="screen_size < 1 ? 'cart' : 'mobile'">
 	<mat-card-content>
 		<div class="stars">
 			<span>Rate:</span>

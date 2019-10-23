@@ -6,6 +6,7 @@ import { DatakeepService } from 'src/app/services/datakeep.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddcommentComponent } from '../../components/addcomment/addcomment.component'
 import { MessagesComponent } from '../../components/messages/messages.component';
+import { ScreenService } from 'src/app/services/screen.service';
 
 
 @Component({
@@ -15,24 +16,25 @@ import { MessagesComponent } from '../../components/messages/messages.component'
 })
 export class DetailProductComponent implements OnInit {
 
-	data$;
-	id            : any;
-	product       : any;
-	product_name  : string;
-	product_img   : string;
-	product_text  : any;
-	reviews       : any;
+	id           : any;
+	product      : any;
+	product_name : string;
+	product_img  : string;
+	product_text : any;
+	reviews = [];
 	reviews_items : any;
 	reviews_shown : boolean;
 	title         : string;
-	message: string = 'In order to leave a comment you need to log in!';
+	screen_size   : number = 0;
+	message : string = 'In order to leave a comment you need to log in!';
 
 	constructor(
 		public  api      : ApiService,
 		private route    : ActivatedRoute,
 		private location : Location,
 		public  storage  : DatakeepService,
-		private dialog   : MatDialog
+		private dialog   : MatDialog,
+		private screen   : ScreenService
 	) {}
 
 	ngOnInit() {
@@ -55,6 +57,15 @@ export class DetailProductComponent implements OnInit {
 		}
 		this.reviews_shown = false;
 		this.getListReviews();
+		this.onScreen();
+	}
+
+	onScreen() {
+		this.screen_size = this.screen.getRatio();
+	}
+
+	onResize(event) {
+		this.onScreen();
 	}
 
 	goBack() {
@@ -65,7 +76,7 @@ export class DetailProductComponent implements OnInit {
 		this.product_img = arr.img;
 		this.product_name = arr.title;
 		this.product_text = arr.text;
-		this.title = "Description for " + this.product_name;
+		this.title = "Details product";
 	}
 
 	addComment(): void {
@@ -102,7 +113,11 @@ export class DetailProductComponent implements OnInit {
 	getListReviews(){
 		this.api.listReviews(this.id).subscribe(
 			data => { 
-				this.reviews = data; 
+				let mass : any;
+				mass = data;
+				for (var i = 1; i <= mass.length; i++){
+					this.reviews.push(mass[mass.length - i]);
+				}
 				this.reviews_shown = true;
 			},
 			error => { console.log('error: ', error) }

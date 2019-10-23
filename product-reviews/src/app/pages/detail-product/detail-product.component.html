@@ -5,8 +5,8 @@
 		Back
 	</button>
 </div>
-<div class="container">
-	<div class="product">
+<div (window:resize)="onResize($event)" [ngClass]="screen_size < 1 ? 'container' : 'mobile'">
+	<div [ngClass]="screen_size < 1 ? 'product' : 'mobile-product'">
 		<h3>{{ product_name }}</h3>
 		<span class="image">
 			<img
@@ -20,10 +20,7 @@
 			{{ product_text }}
 		</span>
 	</div>
-	<!-- <div>
-		<app-list-comments [List_comments]="storage.reviews_item"></app-list-comments>
-	</div> -->
-	<div class="reviews">
+	<div [ngClass]="screen_size < 1 ? 'reviews' : 'mobile-reviews'">
 		<h3>Reviews:</h3>
 		<button mat-raised-button color="primary" (click)="addComment()">
 			<i class="material-icons">add</i>

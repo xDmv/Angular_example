@@ -1,4 +1,4 @@
-<div class="block-message">
+<div class="block-message" (window:resize)="onResize($event)">
 	<div class="text-mesage">
 		{{ title }}
 	</div>
@@ -41,7 +41,10 @@
 				<i class="material-icons" *ngIf="rate == 5">grade</i>
 			</span>
 		</div>
-		<mat-form-field class="example-full-width" class="texta">
+		<mat-form-field 
+			class="example-full-width" 
+			[ngClass]="screen_size < 1 ? 'texta' : 'mobile'"
+			>
 			<textarea 
 				class="form-control"
 				matInput 

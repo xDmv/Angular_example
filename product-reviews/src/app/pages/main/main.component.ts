@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { DatakeepService } from 'src/app/services/datakeep.service';
+import { ScreenService } from 'src/app/services/screen.service';
 
 
 @Component({
@@ -18,13 +19,15 @@ export class MainComponent implements OnInit {
 	product  : any;
 	shown    : boolean = false;
 
-	cols : number = 1;
-	hei  : string = '1:1';
+	cols        : number = 1;
+	hei         : string = '1:1';
+	screen_size : number = 0;
 
 	constructor(
 		public  api    : ApiService,
 		private router : Router,
-		public  data   : DatakeepService
+		public  data   : DatakeepService,
+		private screen : ScreenService
 	) {
 
 	}
@@ -40,14 +43,23 @@ export class MainComponent implements OnInit {
 				console.log('error: ', error);
 			}
 		);
+		this.onScreen();
+	}
+
+	onScreen() {
+		this.screen_size = this.screen.getRatio();
+	}
+
+	onResize(event) {
+		this.onScreen();
 	}
 
 	onGridList() {
-		if (this.cols == 3) {
+		if (this.cols == 2) {
 			this.cols = 1;
 		} else {
-			this.cols = 3;
-			this.hei = "3:1";
+			this.cols = 2;
+			this.hei = "2:1";
 		}
 	}
 

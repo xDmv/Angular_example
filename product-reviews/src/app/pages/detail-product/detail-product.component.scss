@@ -26,3 +26,12 @@
 	text-decoration : none;
 	word-wrap       : break-word;
 }
+.mobile{
+	margin  : 16px;
+	display : block;
+	.image{
+		img{
+			max-width : 200px;
+		}
+	}
+}

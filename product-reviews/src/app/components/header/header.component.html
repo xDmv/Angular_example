@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" (window:resize)="onResize($event)">
 	<div class="title">
 		<i class="material-icons" *ngIf="icon_toggle">info</i>
 		<i class="material-icons" *ngIf="!icon_toggle">list</i>
@@ -7,16 +7,28 @@
 	<div class="spacer"></div>
 	<div class="block-btn">
 		<div class="buttons" *ngIf="!avtorizate">
-			<button mat-raised-button color="basic" 
-			(click)="openAutharizate('Please login in!', 'Log in')">
-				<i class="material-icons">input</i>
-				Log in
-			</button>
-			<button mat-raised-button color="warn" 
-			(click)="openAutharizate('Please registrate!', 'Registrate')">
-				<i class="material-icons">person_add</i>
-				Registrate
-			</button>
+			<div *ngIf="SizeScreen < 1">
+				<button mat-raised-button color="basic" 
+					(click)="openAutharizate('Please login in!', 'Log in')">
+					<i class="material-icons">input</i>
+					Log in
+				</button>
+				<button mat-raised-button color="warn" 
+				(click)="openAutharizate('Please registrate!', 'Registrate')">
+					<i class="material-icons">person_add</i>
+					Registrate
+				</button>
+			</div>
+			<div *ngIf="SizeScreen >= 1">
+				<button mat-raised-button color="basic" 
+					(click)="openAutharizate('Please login in!', 'Log in')">
+					<i class="material-icons">input</i>
+				</button>
+				<button mat-raised-button color="warn" 
+				(click)="openAutharizate('Please registrate!', 'Registrate')">
+					<i class="material-icons">person_add</i>
+				</button>
+			</div>
 		</div>
 		<div class="login" *ngIf="avtorizate">
 			<div class="block">
@@ -25,7 +37,7 @@
 			</div>
 			<div class="block" (click)="onCloseLogin()">
 				<i class="material-icons">exit_to_app</i>
-				<span class="name">Exit</span>
+				<span class="name" *ngIf="(SizeScreen < 1)">Exit</span>
 			</div>
 		</div>
 	</div>
