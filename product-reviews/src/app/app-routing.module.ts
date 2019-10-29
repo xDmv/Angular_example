@@ -13,6 +13,10 @@ const routes: Routes = [
 	{
 		path: 'product/:id',
 		component: DetailProductComponent
+	},
+	{
+		path: '**',
+		component: MainComponent
 	}
 ];
 
