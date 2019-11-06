@@ -1,5 +1,6 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { ScreenService } from 'src/app/services/screen.service';
+import { Comment } from '../../interfaces/comment'
 
 @Component({
 	selector: 'app-list-comments',
@@ -8,7 +9,7 @@ import { ScreenService } from 'src/app/services/screen.service';
 })
 export class ListCommentsComponent implements OnInit {
 
-	@Input() List_comments: any;
+	@Input() List_comments: Comment;
 	stars = [1, 2, 3, 4, 5];
 	screen_size : number = 0;
 

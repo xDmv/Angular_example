@@ -115,7 +115,6 @@ export class DetailProductComponent implements OnInit {
 			data => { 
 				let mass : any;
 				mass = data;
-				console.log("data comment: ", data);
 				for (var i = 1; i <= mass.length; i++){
 					this.reviews.push(mass[mass.length - i]);
 				}
