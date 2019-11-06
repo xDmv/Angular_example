@@ -17,23 +17,23 @@
 	</span>
 	<span *ngIf="shown">
 		<div *ngIf="cols == 1">
-			<div *ngFor="let x of products">
+			<div *ngFor="let product of products | async">
 				<div *ngIf="screen_size < 1" class="col1">
-					<span class="indent" (click)="onChoeseProduct(x)">
-						<img src="http://smktesting.herokuapp.com/static/{{ x.img }}" alt="photo product"/>
+					<span class="indent" (click)="onChoeseProduct(product)">
+						<img src="http://smktesting.herokuapp.com/static/{{ product.img }}" alt="photo product"/>
 					</span>
-					<span class="name-product" (click)="onChoeseProduct(x)">{{ x.title }}</span>
-					<button mat-raised-button color="primary" (click)="onChoeseProduct(x)">
+					<span class="name-product" (click)="onChoeseProduct(product)">{{ product.title }}</span>
+					<button mat-raised-button color="primary" (click)="onChoeseProduct(product)">
 						Detals
 						<i class="material-icons">more_horiz</i>
 					</button>
 				</div>
 				<div *ngIf="screen_size >=1" class="mobile">
-						<span (click)="onChoeseProduct(x)">
-							<img src="http://smktesting.herokuapp.com/static/{{ x.img }}" alt="photo product"/>
+						<span (click)="onChoeseProduct(product)">
+							<img src="http://smktesting.herokuapp.com/static/{{ product.img }}" alt="photo product"/>
 						</span>
-						<span class="name-product" (click)="onChoeseProduct(x)">{{ x.title }}</span>
-						<button mat-raised-button color="primary" (click)="onChoeseProduct(x)">
+						<span class="name-product" (click)="onChoeseProduct(product)">{{ product.title }}</span>
+						<button mat-raised-button color="primary" (click)="onChoeseProduct(product)">
 							Detals
 							<i class="material-icons">more_horiz</i>
 						</button>

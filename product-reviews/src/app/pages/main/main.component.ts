@@ -3,7 +3,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { DatakeepService } from 'src/app/services/datakeep.service';
 import { ScreenService } from 'src/app/services/screen.service';
-
+import { Observable } from 'rxjs';
+import { Product } from "../../interfaces/product";
 
 @Component({
 	selector    : 'app-main',
@@ -13,8 +14,8 @@ import { ScreenService } from 'src/app/services/screen.service';
 export class MainComponent implements OnInit {
 
 	title       : string;
-	products    : any;
-	product     : any;
+	products    : Observable<Object>;
+	// product     : any;
 	shown       : boolean = false;
 	cols        : number = 1;
 	hei         : string = '1:1';
@@ -31,15 +32,17 @@ export class MainComponent implements OnInit {
 
 	ngOnInit() {
 		this.title = "List products";
-		this.api.listProduct().subscribe(
-			data => {
-				this.products = data;
-				this.shown = true;
-			},
-			error => {
-				console.log('error: ', error);
-			}
-		);
+		this.products = this.api.listProduct();
+		this.shown = true;
+		// this.api.listProduct().subscribe(
+		// 	data => {
+		// 		this.products = data;
+		// 		this.shown = true;
+		// 	},
+		// 	error => {
+		// 		console.log('error: ', error);
+		// 	}
+		// );
 		this.onScreen();
 	}
 
