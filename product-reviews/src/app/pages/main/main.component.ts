@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { DatakeepService } from 'src/app/services/datakeep.service';
 import { ScreenService } from 'src/app/services/screen.service';
 import { Observable } from 'rxjs';
 import { Product } from "../../interfaces/product";
+import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
 	selector    : 'app-main',
@@ -15,11 +16,14 @@ export class MainComponent implements OnInit {
 
 	title       : string;
 	products    : Observable<Object>;
-	// product     : any;
+	product     : any;
 	shown       : boolean = false;
-	cols        : number = 1;
-	hei         : string = '1:1';
 	screen_size : number = 0;
+
+	dataSource = new MatTableDataSource<Product>();
+	displayedColumns: string[] = ['id', 'title', 'img', 'text', 'button'];
+	@ViewChild(MatPaginator, { static: false } ) paginator: MatPaginator;
+	@ViewChild(MatSort, { static: false }) sort: MatSort;
 
 	constructor(
 		public  api    : ApiService,
@@ -27,22 +31,23 @@ export class MainComponent implements OnInit {
 		public  data   : DatakeepService,
 		private screen : ScreenService
 	) {
-
 	}
 
 	ngOnInit() {
 		this.title = "List products";
 		this.products = this.api.listProduct();
 		this.shown = true;
-		// this.api.listProduct().subscribe(
-		// 	data => {
-		// 		this.products = data;
-		// 		this.shown = true;
-		// 	},
-		// 	error => {
-		// 		console.log('error: ', error);
-		// 	}
-		// );
+		this.products.subscribe(
+			(data) => {
+				this.product = data;
+				this.dataSource = new MatTableDataSource<Product>(this.product);
+				this.dataSource.paginator = this.paginator;
+				this.dataSource.sort = this.sort;
+			},
+			error => {
+				console.log('error: ', error);
+			}
+		);
 		this.onScreen();
 	}
 
@@ -52,15 +57,6 @@ export class MainComponent implements OnInit {
 
 	onResize(event) {
 		this.onScreen();
-	}
-
-	onGridList() {
-		if (this.cols == 2) {
-			this.cols = 1;
-		} else {
-			this.cols = 2;
-			this.hei = "2:1";
-		}
 	}
 
 	onChoeseProduct(product: any) {

@@ -32,6 +32,24 @@
 	justify-content : center;
 }
 
+.container {
+	width        : 1170px;
+	margin-top   : 25px;
+	margin-right : auto;
+	margin-left  : auto;
+	table{
+		width : 100%
+	}
+	mat-paginator{
+		margin-top: 15px;
+	}
+}
+
+.string-table{
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
 .mobile{
 	display : grid;
 	margin  : 16px;
