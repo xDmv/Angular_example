@@ -31,7 +31,7 @@
 
 				<ng-container matColumnDef="img">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header> Image src </th>
-						<td mat-cell *matCellDef="let element" [ngClass]="screen_size >= 1 ? 'string-table':''">http://<wbr>smktesting.<wbr>herokuapp.com<wbr>/static/<wbr>{{element.img}} </td>
+						<td mat-cell *matCellDef="let element">http://<wbr>smktesting.<wbr>herokuapp.com<wbr>/static/<wbr>{{element.img}} </td>
 					</ng-container>
 	
 				<ng-container matColumnDef="text">
