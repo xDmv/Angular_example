@@ -26,9 +26,8 @@
 				<i class="material-icons" *ngIf="rate <= 2">star_border</i>
 				<i class="material-icons" *ngIf="rate >= 3">grade</i>
 			</span>
-			<span 
-				(click)="onRate(4, true)" 
-				(mouseenter)="onRate(4)" 
+			<span (click)="onRate(4, true)" 
+				(mouseenter)="onRate(4, false)" 
 				(mouseleave)="onRate(0, false)">
 				<i class="material-icons" *ngIf="rate <= 3">star_border</i>
 				<i class="material-icons" *ngIf="rate >= 4">grade</i>
